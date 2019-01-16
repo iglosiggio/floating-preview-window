@@ -1,7 +1,7 @@
-
-// Copyright (c) Shou 2015
+// Copyright (c) Ulisses 2019
 // License: MIT
 
+const Meta = imports.gi.Meta;
 const Lang = imports.lang;
 const Main = imports.ui.main;
 
@@ -21,14 +21,14 @@ HoppingWindow.prototype =
   enable: function()
   {
     this.workspaceSwitchSignal
-      = global.screen.connect( "workspace-switched" , Lang.bind(this, this.try_spawn)
+      = global.workspace_manager.connect( "workspace-switched" , Lang.bind(this, this.try_spawn)
                                )
   }
   ,
   disable: function()
   {
     this.despawn_window()
-    global.screen.disconnect(this.workspaceSwitchSignal)
+    global.workspace_manager.disconnect(this.workspaceSwitchSignal)
   }
   ,
   try_spawn: function()
@@ -42,16 +42,16 @@ HoppingWindow.prototype =
   ,
   find_window: function(title)
   {
-    let workspaces_count = global.screen.n_workspaces;
+    let workspaces_count = global.workspace_manager.n_workspaces;
 
     let active_workspace_index
-      = global.screen.get_active_workspace_index();
+      = global.workspace_manager.get_active_workspace_index();
 
     for (let i = 0; i < workspaces_count; i++)
       if (i != active_workspace_index)
       {
         let workspace
-          = global.screen.get_workspace_by_index(i);
+          = global.workspace_manager.get_workspace_by_index(i);
 
         return this.find_window_in_workspace(workspace, title);
       }
