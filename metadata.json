@@ -1,0 +1,9 @@
+{
+  "description": "Watch youtube or any other app while working.\n\nJust click on the panel element and then move the window to other workspace.", 
+  "extension-id": "floating-preview-window", 
+  "name": "Floating preview window", 
+  "shell-version": [ "3.32" ], 
+  "url": "https://github.com/iglosiggio/floating-preview-window", 
+  "uuid": "floating-preview-window@iglosiggio.github.io", 
+  "version": 1
+}
